@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hapo - Parent Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="logo.jpg" alt="Hapo Logo" class="logo">
+                <div class="brand-content">
+                    <span class="brand-name">Hapo Technology</span>
+                    <span class="brand-tagline">Your Money, Your Growth, The Hapo Way!</span>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <button class="child-login-btn" onclick="window.location.href='index.html'">Back to Home</button>
+                <button class="parent-signin-btn" onclick="window.location.href='parentLogin.html'">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Signup Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h2>Parent Sign Up</h2>
+                    <p>Create your Hapo account to manage your family's finances</p>
+                </div>
+
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                        <span class="error-message" id="fullNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="password" name="password" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                               
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength"></div>
+                        <span class="error-message" id="passwordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="password-input">
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                               
+                            </button>
+                        </div>
+                        <span class="error-message" id="confirmPasswordError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <span class="checkbox-custom"></span>
+                            I agree to the <a href="#" class="link">Terms of Service</a> and <a href="#" class="link">Privacy Policy</a>
+                        </label>
+                        <span class="error-message" id="termsError"></span>
+                    </div>
+
+                    <button type="submit" class="auth-button" id="signupButton">
+                        <span id="signupButtonText">Create Account</span>
+                        <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+                </form>
+
+                <!-- Email Verification Form (Hidden by default) -->
+                <div id="emailVerificationForm" class="auth-form" style="display: none;">
+                    <div class="mfa-header">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Verify Your Email Address</h3>
+                        <p>Enter the verification code sent to your email</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailVerificationCode">Verification Code</label>
+                        <input type="text" id="emailVerificationCode" name="emailVerificationCode" maxlength="6" placeholder="000000" required>
+                        <span class="error-message" id="emailVerificationError"></span>
+                    </div>
+
+                    <div class="mfa-options">
+                        <button type="button" class="link-button" onclick="resendEmailVerification()">Resend Code</button>
+                        <button type="button" class="link-button" onclick="backToSignup()">Back to Sign Up</button>
+                    </div>
+
+                    <button type="button" class="auth-button" onclick="verifyEmailCode()">
+                        <span id="emailVerifyButtonText">Verify Email</span>
+                        <div class="loading-spinner" id="emailVerifySpinner" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="auth-divider">
+                    <span>or sign up with</span>
+                </div>
+
+                <div class="oauth-buttons">
+                    <button class="oauth-button google" onclick="signUpWithGoogle()">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                </div>
+
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="parentLogin.html" class="link">Sign in here</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
